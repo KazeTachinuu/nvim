@@ -1,12 +1,16 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
 -- Only required if you have packer configured as `opt`
-vim.cmd.packadd('packer.nvim')
+vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
-
+    use {
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig",
+    }
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
         -- or                            , branch = '0.1.x',
@@ -24,12 +28,16 @@ return require('packer').startup(function(use)
 
 
 
-    use { "catppuccin/nvim", as = "catppuccin" }
-
+    use 'sainnhe/everforest'
+    use 'folke/todo-comments.nvim'
+    use 'numToStr/Comment.nvim'
+    use({
+        'akinsho/toggleterm.nvim',
+        tag = '*'
+    })
     use({ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' })
     use('nvim-treesitter/playground')
     use('mbbill/undotree')
-    use('tpope/vim-fugitive')
 
     use {
         'VonHeikemen/lsp-zero.nvim',
@@ -53,7 +61,6 @@ return require('packer').startup(function(use)
         }
     }
 
-    use("folke/zen-mode.nvim")
     use("github/copilot.vim")
 
     use {
@@ -65,4 +72,9 @@ return require('packer').startup(function(use)
     use 'nvim-tree/nvim-web-devicons'
     use 'romgrk/barbar.nvim'
     use 'nvim-tree/nvim-tree.lua'
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
+
 end)
