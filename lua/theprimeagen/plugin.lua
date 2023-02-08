@@ -72,6 +72,7 @@ return require('packer').startup(function(use)
     use 'nvim-tree/nvim-web-devicons'
     use 'romgrk/barbar.nvim'
     use 'nvim-tree/nvim-tree.lua'
+    use 'tpope/vim-fugitive'
     use {
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
